@@ -1,0 +1,28 @@
+{% extends 'loginapp/base.html' %}
+{% block title%}Login{% endblock %}
+{% block childblock %}
+<h3>Please enter your Username and Password !</h3>
+<div class="container" align='center'>
+  <div class="jumbotron">
+ <form class="form-inline" method="post">
+ <div class="form-group">
+   <label for="username">Username:</label>
+   <input type="text" class="form-control" name="username" id="username">
+ </div>
+ <br><br>
+ <div class="form-group">
+   <label for="password">Password:</label>
+   <input type="password" class="form-control" id="password" name="password">
+ </div>
+ <br><br>
+     {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+      {% endif %}
+ {% csrf_token %}
+ <button type="submit" class="btn btn-primary button">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

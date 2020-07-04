@@ -1,0 +1,18 @@
+{% extends 'loginapp/base.html' %}
+{% block title %}Total User{% endblock %}
+{% block childblock %}
+<h3>Total User : {{user_count}}</h3>
+<br><br>
+<form method="post" action="/delete-user/">
+    <div class='dropdown' align="center">
+    <select name="user_id" style="width:100px;height:32px;">
+      <option value="Reg. User Id" disabled>Select</option>
+      {% for user in user_detail %}
+      <option value="{{user.id}}">{{user.id}}</option>
+      {% endfor %}
+    </select>
+    {% csrf_token %}
+    <input type='submit' class="btn btn-danger" value="Delete User">
+  <div>
+<form>
+{% endblock %}
